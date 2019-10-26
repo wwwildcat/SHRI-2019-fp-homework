@@ -5,6 +5,8 @@ const renderCounter = Component => class extends React.Component {
 		let value = this.props.counter - 1;
 		let counterStyle = {};
 		const buttonStyle = {
+			display: 'inline-block',
+			marginRight: 15,
 			position: 'relative'
 		};
 		if (this.props.decrement) {
@@ -17,11 +19,12 @@ const renderCounter = Component => class extends React.Component {
 			};
 		}
 		return (
-			<Component style={buttonStyle} {...this.props}>
-				<span style={counterStyle}>{value + ' '}</span>
-				{this.props.children}
-			</Component>
-			
+			<div style={buttonStyle}>
+				<Component {...this.props}>
+					<span style={counterStyle}>{value + ' '}</span>
+					{this.props.children}
+				</Component>
+			</div>
 		);
 	}
 };
